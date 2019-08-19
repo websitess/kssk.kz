@@ -418,6 +418,7 @@ input[type="search"]::-webkit-search-results-decoration {
         margin-bottom: 10px;
 		box-shadow: none;
 		border: none;
+		-webkit-appearance:none;
 		&::placeholder{
 			color: #555454;
 		}
@@ -497,7 +498,7 @@ input[type="search"]::-webkit-search-results-decoration {
 	text-transform: uppercase;
 	cursor: pointer;
 	border-radius: 0px;
-	border: 2px solid #fff;
+	border: 2px solid $color;
 	padding: 17px 40px;
     line-height: 1;
 	transition: 300ms;
@@ -505,7 +506,7 @@ input[type="search"]::-webkit-search-results-decoration {
 		background-color: $color;
 		color: #fff;
 	}
-	&:hover, &.active {
+	&:hover{
 		background-color: #fff;
 		color: $color!important;
 	}	
@@ -562,7 +563,7 @@ input[type="search"]::-webkit-search-results-decoration {
 	top: 2px;
 }
 .col--whatsapp:after {
-	content: "\f232"
+	content: "\f232";
 }
 .col--email{
 	&:before{
@@ -578,8 +579,7 @@ input[type="search"]::-webkit-search-results-decoration {
 	}
 }
 .col--phone,
-.phone,
-.col--whatsapp{
+.phone{
 	a{
 		pointer-events: none;
 	}
@@ -592,6 +592,14 @@ input[type="search"]::-webkit-search-results-decoration {
 	@media screen and (max-width: 1024px){
 		a{
 			pointer-events: auto;
+		}
+	}
+}
+.col--whatsapp{
+	a{
+		transition: 300ms;
+		&:hover{
+			text-decoration: underline;
 		}
 	}
 }
@@ -626,7 +634,8 @@ input[type="search"]::-webkit-search-results-decoration {
 	@media screen and (max-width: 1280px){
 		&:after{
 			left: 0;
-			top: 100%;
+			top: auto;
+			bottom: -10px;
 			transform: translateY(0);
 		}
 	}
@@ -920,9 +929,9 @@ header {
 		height: 80px;
 		.logo{
 			width: 120px;
-			height: 70px;
+			height: 60px;
 			position: absolute;
-			top: 50%;
+			top: 7px;
 			right: 0;
 			left: 0;
 			margin: 0 auto;
@@ -934,16 +943,22 @@ header {
 					display: none;
 				}
 				.h-contacts{
-					display: none;
-					position: absolute;
-					top: 80px;
-					right: 0;
-					left: 0;
-					background-color: $color;
-					text-align: center;
-					padding: 10px 0;
+					.col--phone{
+						display: none;
+						position: fixed;
+						top: 80px;
+						right: 0;
+						left: 0;
+						background-color: $color;
+						text-align: center;
+						padding: 10px 0;
+						box-shadow: 0 0 10px rgba(0,0,0,0.5);
+					}
 					a{
 						color: #fff;
+						strong{
+							font-weight: normal;
+						}
 					}
 					.more--btn{
 						display: none;
@@ -956,13 +971,19 @@ header {
 						left: 0;
 					}
 				}
+				.whatsapp{
+					position: fixed;
+					top: 32px;
+					left: auto;
+					right: 42px;
+				}
 				.col--email{
 					display: none;
 				}
 				.search--btn{
 					position: absolute;
 					top: 30px;
-					right: 50px;
+					right: 70px;
 				}
 				.search{
 					top: 80px;
@@ -979,6 +1000,7 @@ header {
 					background-color: $color;
 					padding: 15px;
 					margin: 0;
+					box-shadow: 0 0 10px rgba(0,0,0,0.5);
 					>li{
 						padding: 0;
 						>a{

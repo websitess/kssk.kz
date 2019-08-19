@@ -25,6 +25,8 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+			object-fit: cover;
+			object-position: center center;
 		}
 		.slider__block {
 			position: absolute;
@@ -64,6 +66,7 @@
 			.btn{
 				background-color: transparent;
 				margin-top: 40px;
+				border: 2px solid #fff;
 				&:hover{
 					background-color: #fff;
 				}
@@ -321,7 +324,7 @@
 			border-left: 3px solid $color;
 			border-bottom: 3px solid $color;
 		}
-		.img{
+		.img, .cat-img{
 			position: relative;
 			height: 300px;
 			>img{
@@ -345,14 +348,12 @@
 		flex-direction: column;
 		justify-content: center;
 		position: relative;
-		flex: 1 0 auto;
 		h5{
 			padding: 0px 0 25px 74px;
 			margin: 0;
 			font-size: 18px;
 			color: #666666;
 			font-family: $boldSB;
-			flex: 1 0 auto;
 		}
 	}
 	&:hover{
@@ -435,7 +436,7 @@
 					position: absolute;
 					top: 0;
 					right: 0;
-					left: 0;
+					left: 17px;
 					bottom: 0;
 					background-color: rgba(113,128,185, 0.7);
 					opacity: 0;

@@ -101,6 +101,12 @@ $(function(){
 
     $('.search--btn').on('click', function(){
         $('.search').addClass('open');
+        $(document).bind('touchstart', function(e){
+            if(!(e.target).closest('.search')){
+                $('.search').removeClass('open');
+            }
+            e.stopPropagation();
+        });
         return false;
     });
     $('.close-btn').on('click', function(){
@@ -109,17 +115,28 @@ $(function(){
     });
 
     $('.phone--btn').on('click', function(){
-        if ($('header .h-contacts').is(':visible')) {
-            $('header .h-contacts').slideUp();
+        if ($('header .col--phone').is(':visible')) {
+            $('header .col--phone').slideUp();
             $(this).removeClass('open');
         } else {
-            $('header .h-contacts').slideDown();
+            $('header .col--phone').slideDown();
             $(this).addClass('open');
         }
+        $(document).bind('touchstart', function(e){
+            if(!(e.target).closest('.phone--btn')){
+                $('.col--phone').slideUp();
+                $('.phone--btn').removeClass('open');
+            }
+            e.stopPropagation();
+        });
         return false;
     });
 
     $('.tel').inputmask('+7 (999) 999-99-99');
+    
+    $(':input').live('focus',function(){
+        $(this).attr('autocomplete', 'off');
+    });
 });
 
 $(window).on("load",function(e){
@@ -139,6 +156,12 @@ $(window).on("load",function(e){
             $(this).children('.submenu__block').slideUp(250);
         });
     }
+});
+
+$(window).on("load",function(){
+    $(".card .character, .cat--table").mCustomScrollbar({
+        axis: "x"
+    })
 });
 
 // $(function(){
